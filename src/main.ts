@@ -1,9 +1,10 @@
 import Vue from 'vue';
-import VueApp from './App.vue';
+
+import IndexApp from './Index.vue';
 import vuetify from './plugins/vuetify';
 import { config } from 'pixi-live2d-display';
 import { App } from '@/app/App';
-
+import router from './router'; // 导入刚刚创建的路由实例
 Vue.config.productionTip = false;
 
 Vue.directive('visible', function(el, binding) {
@@ -12,7 +13,8 @@ Vue.directive('visible', function(el, binding) {
 
 (window as any).vueApp = new (Vue as any)({
     vuetify,
-    render: (h: any) => h(VueApp),
+    router,
+    render: (h: any) => h(IndexApp),
 }).$mount('#app');
 
 (window as any).App = App;

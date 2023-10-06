@@ -1,5 +1,7 @@
 <template>
+  
   <v-app>
+  
     <v-navigation-drawer absolute stateless :width="drawerWidth" v-model="drawer" @transitionend="!drawer && (drawerSwitch=true)">
       <v-toolbar color="primary">
         <v-toolbar-title>Live2D Viewer</v-toolbar-title>
@@ -64,6 +66,7 @@
         <v-btn icon v-bind="attrs" @click="snackbar.visible=false"><v-icon>mdi-close</v-icon></v-btn>
       </template>
     </v-snackbar>
+    <LiveControler  :id="selectedModelID"  />
   </v-app>
 </template>
 
@@ -75,12 +78,13 @@ import ModelEditor from '@/components/ModelEditor.vue';
 import DropZone from '@/components/DropZone.vue';
 import Settings from '@/components/Settings.vue';
 import ModelInfo from '@/components/ModelInfo.vue';
+import LiveControler from '@/components/LiveControler.vue';
 import { Background } from '@/tools/Background';
 import { App } from '@/app/App';
 
 export default Vue.extend({
     name: 'App',
-    components: { ModelList, ModelCreation, ModelEditor, DropZone, ModelInfo, Settings },
+    components: { ModelList, ModelCreation, ModelEditor, DropZone, ModelInfo, Settings,LiveControler },
     data: () => ({
         drawer: true,
         drawerSwitch: false,

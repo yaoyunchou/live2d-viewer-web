@@ -169,7 +169,7 @@ export default Vue.extend({
         'motionState.currentGroup': 'updateMotionProgress',
     },
     mounted() {
-        this.motionProgressTimerID = setInterval(this.updateMotionProgress, 50);
+        // this.motionProgressTimerID = setInterval(this.updateMotionProgress, 50);
     },
     methods: {
         updateModel() {
@@ -248,6 +248,7 @@ export default Vue.extend({
             this.expressions[index]!.error = error;
         },
         startMotion(motionGroup: MotionGroupEntry, index: number) {
+            console.log('-------###-------', motionGroup, motionGroup.name, index)
             this.model?.pixiModel?.motion(motionGroup.name, index, MotionPriority.FORCE);
         },
         setExpression(index: number) {
@@ -269,7 +270,7 @@ export default Vue.extend({
     },
     beforeDestroy() {
         this.resetModel();
-        clearInterval(this.motionProgressTimerID);
+        // clearInterval(this.motionProgressTimerID);
     },
 });
 </script>

@@ -5,6 +5,20 @@ module.exports = {
     configureWebpack: {
         devServer: {
             historyApiFallback: false,
+            proxy: {
+                '/api':{
+                    target: 'http://127.0.0.1:3000',
+                    pathRewrite:{
+                        "":""
+                    }
+                },
+                '/oauth':{
+                    target: 'https://aip.baidubce.com',
+                    pathRewrite:{
+                        "":""
+                    }
+                }
+            }
         },
     },
 
@@ -31,4 +45,5 @@ module.exports = {
 
         config.resolve.set('fallback', { stream: false });
     },
+   
 };
